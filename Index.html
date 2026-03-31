@@ -1,193 +1,482 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>
-      LEARN-DO-CODE
-    </title>
-    <link rel="stylesheet" href="">
-  </head>
-  <body>
-    <div class="header">
-      <nav>
-        <div><img src="" alt="LEARNDO"></div>
-        <div>
-          <ul>
-              <li class="nav-item">
-                  <a class="nav-link nav-link-custom" href="#about_me">About Me</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link nav-link-custom" href="#projects">Project <i class="fa-solid fa-diagram-project"></i></a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link nav-link-custom" href="#skills">Skills</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link nav-link-custom" href="#contact">Contact</a>
-              </li>
-              <li class="nav-item ms-2">
-                  <a href="Static/" class="btn btn-outline-accent">Open CV</a>
-              </li>
-            </ul>
-        </div>
-      </nav>
-    </div>
-    <div>
-      <section class="SectionOne">
-        <div>
-          <div>
-            <h1>Web and Mobile App</h1>
-            <h2>Developer</h2>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>LEARNDO</title>
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Inter for modern sans-serif -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Static/css/Index.css">
+</head>
+<body>
 
-            <p>Hi, I'm Lindokuhle Qwabe and I am a full stack Developer with good knowlage of Information Sytems SDLC.</p>
-          </div>
-          <div>
-            <img src="Static/images/4727484.jpg" alt="Image not available">
+  <!-- VERTICAL PILL NAVIGATION (DESKTOP: left side) -->
+  <nav class="vertical-nav" id="verticalNav">
+    <div class="nav-logo">
+      <i class="fas fa-code"></i>
+      <span>LT</span>
+    </div>
+    <ul class="nav-menu-vertical">
+      <li class="nav-item-vertical active">
+        <a href="#home" class="nav-link-vertical" data-nav="home">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </a>
+      </li>
+      <li class="nav-item-vertical">
+        <a href="#about" class="nav-link-vertical" data-nav="about">
+          <i class="fas fa-user-astronaut"></i>
+          <span>About</span>
+        </a>
+      </li>
+      <li class="nav-item-vertical">
+        <a href="#projects" class="nav-link-vertical" data-nav="projects">
+          <i class="fas fa-diagram-project"></i>
+          <span>Projects</span>
+        </a>
+      </li>
+      <li class="nav-item-vertical">
+        <a href="#skills" class="nav-link-vertical" data-nav="skills">
+          <i class="fas fa-cogs"></i>
+          <span>Skills</span>
+        </a>
+      </li>
+      <li class="nav-item-vertical">
+        <a href="#contact" class="nav-link-vertical" data-nav="contact">
+          <i class="fas fa-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- TOP RIGHT HORIZONTAL PILLS: CV + Dark/Light Toggle -->
+  <div class="top-actions">
+    <a href="#" class="pill-btn cv-pill" id="openCVBtn">
+      <i class="fas fa-file-alt"></i> Open CV
+    </a>
+    <button class="pill-btn theme-toggle" id="themeToggleBtn">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun" style="display: none;"></i>
+      <span class="toggle-text">Dark</span>
+    </button>
+  </div>
+
+  <!-- MAIN CONTENT WRAPPER (to account for left vertical nav) -->
+  <main class="main-content">
+    <!-- HOME Section (root) -->
+    <section id="home" class="section home-section">
+      <div class="container home-grid">
+        <div class="home-text">
+          <div class="badge-accent">ICT Application Developer</div>
+          <h1 class="glow-text">Web & Mobile App<br><span class="accent-text">Developer</span></h1>
+          <p class="lead-paragraph">Hi, I'm Lindokuhle Qwabe — a passionate full-stack developer with strong SDLC knowledge, turning ideas into elegant digital solutions.</p>
+          <div class="home-cta">
+            <a href="#contact" class="btn-primary">Let's Connect <i class="fas fa-arrow-right"></i></a>
+            <a href="#projects" class="btn-outline">Explore Work</a>
           </div>
         </div>
-      </section>
-      <div class="SectionTwo">
-        <div>
-          <h2>About Me</h2>
-          <div>
-            <h4>Personality</h4>
-            <p>I am a recent graduate for Dip In ICT: Application Development and curently persuing an Adv in ICT. 
-              I am very curriouse, specialy when it comes to programming and debbuging I'm facinated by it.
-              dURING MY 3rd year served as volunteering Tutor.
-              I have lead 3 group project development during my enrollemnt,
-            </p>
-            <h4>Favorite Quote</h4>
-            <p>"Start where you are. Use what you have. Do what you can" Arthur Ashe.</p>
-            <p>When it comes to solving real world problems, Im am reminded to begin Imidiately with research, and Use my findings to develop what I can.</p>
-          </div>
-          <div>
-            <h4>Certificates</h4>
-            <div>
-              <h5>Dip In ICT:Application Development</h5>
-              <!--Include review-->
-              <a href="#">View</a>
-            </div>
-            <div>
-              <h5>IT:Technical Support</h5>
-              <!--Include review-->
-              <a href="#">View</a>
-            </div>
+        <div class="home-image">
+          <div class="glass-circle">
+            <img src="Static/images/4727484.jpg" alt="Developer avatar" class="avatar-img">
           </div>
         </div>
       </div>
-      <div class="SectionThree">
-        <h2>Projects</h2>
-        <div>
-          <div class="Card">
+    </section>
+
+    <!-- ABOUT Section -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <h2 class="section-title"><i class="fas fa-user-astronaut"></i> About Me</h2>
+        <div class="about-grid">
+          <div class="about-card glass-card">
+            <h4><i class="fas fa-brain"></i> Personality & Drive</h4>
+            <p>I'm a recent graduate of the Diploma in ICT: Application Development (DUT) and currently pursuing an Advanced Diploma in ICT. Curiosity drives me — I'm fascinated by debugging, clean architecture, and solving real-world challenges. During my 3rd year, I served as a volunteer tutor and led three successful group development projects.</p>
+          </div>
+          <div class="about-card glass-card">
+            <h4><i class="fas fa-quote-left"></i> Favorite Quote</h4>
+            <p>"Start where you are. Use what you have. Do what you can" — Arthur Ashe.</p>
+            <p class="mt-2">This reminds me to begin with research, leverage available tools, and craft impactful solutions incrementally.</p>
+          </div>
+          <div class="about-card glass-card">
+            <h4><i class="fas fa-certificate"></i> Certifications</h4>
+            <div class="cert-item">
+              <span><i class="fas fa-graduation-cap"></i> Dip In ICT: Application Development</span>
+              <a href="#" class="view-link">View <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            <div class="cert-item">
+              <span><i class="fas fa-laptop-code"></i> IT: Technical Support</span>
+              <a href="#" class="view-link">View <i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="education-badge glass-card">
+          <i class="fas fa-university"></i> Durban University of Technology • Diploma + Advanced Diploma (Current)
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS Section -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <h2 class="section-title"><i class="fas fa-diagram-project"></i> Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card glass-card" data-project="studentxtutor">
             <h4>StudentXTutor Session Booking</h4>
-            <p>Tech Stack:</p>
-            <p>Flask</p>
-            <p>Superbase PostgreSQL</p>
-            <a href="">Details</a>
+            <div class="tech-stack"><span>Flask</span><span>Supabase PostgreSQL</span></div>
+            <p>Streamlined tutor appointment system with real-time availability.</p>
+            <button class="project-details-btn" data-modal="modal1">Details <i class="fas fa-arrow-right"></i></button>
           </div>
-          <div class="Card">
+          <div class="project-card glass-card" data-project="shoppersmart">
             <h4>Shoppers Mart Online Store</h4>
-            <p>Tech Stack:</p>
-            <p>ASP.NET Core MVC</p>
-            <p>Azure SQL</p>
-            <a href="">Details</a>
+            <div class="tech-stack"><span>ASP.NET Core MVC</span><span>Azure SQL</span></div>
+            <p>E-commerce platform with cart & order management.</p>
+            <button class="project-details-btn" data-modal="modal2">Details <i class="fas fa-arrow-right"></i></button>
           </div>
-          <div class="Card">
+          <div class="project-card glass-card" data-project="eventpro">
             <h4>Event-Pro Rental Management</h4>
-            <p>Tech Stack:</p>
-            <p>ASP.NET MVC Entity Framework</p>
-            <p>AZURE SQL</p>
-            <a href="">Details</a>
+            <div class="tech-stack"><span>ASP.NET MVC EF</span><span>Azure SQL</span></div>
+            <p>Manage tents, chairs, tables & coldroom rental with online payments.</p>
+            <button class="project-details-btn" data-modal="modal3">Details <i class="fas fa-arrow-right"></i></button>
           </div>
-          <div class="Card">
+          <div class="project-card glass-card" data-project="apprising">
             <h4>Apprising Hotel Management</h4>
-            <p>Tech Stack:</p>
-            <p>Windows Forms</p>
-            <p>Text Files</p>
-            <a href="">Details</a>
+            <div class="tech-stack"><span>Windows Forms</span><span>Text Files</span></div>
+            <p>Desktop solution for reservations and billing.</p>
+            <button class="project-details-btn" data-modal="modal4">Details <i class="fas fa-arrow-right"></i></button>
           </div>
         </div>
       </div>
-      <div class="SectionFour">
-        <h2>Skills</h2>
-        <div>
-          <!--PNG Logos-->
-          <div>
-            <img src="" alt="C#">
-          </div>
-          <div>
-            <img src="" alt="SQL">
-          </div>
-          <div>
-            <img src="" alt="JAVA">
-          </div>
-          <div>
-            <img src="" alt="Python">
-          </div>
-          <div>
-            <img src="" alt="HTML5">
-          </div>
-          <div>
-            <img src="" alt="CSS3">
-          </div>
-          <div>
-            <img src="" alt="JS">
-          </div>
-          <div>
-            <img src="" alt="ASP.NET">
-          </div>
-          <div>
-            <img src="" alt="FLASK">
-          </div>
-          <div>
-            <img src="" alt="TechnicalSupport">
-          </div>
-        </div>
-      </div>
-      <div class="SectionFive">
-        <h2>Contact</h2>
-        <div>
-          <h4>Quick Message</h4>
-          <form action="" method="post">
-            <label for="sender_email">Enter your email</label>
-            <input type="email" name="sender_email" id="">
-            <input type="text" name="message" id="">
-            <input type="submit" value="Send">
-          </form>
-        </div>
-        <div>
-          <h4>Social</h4> <!--Icons-->
-          <a href=""><i class="fa-brands fa-square-linkedin"></i></a>
-          <a href=""><i class="fa-brands fa-facebook-messenger"></i></a>
-          <a href=""><i class="fa-brands fa-github"></i></a>
-          <a href=""><i class="fa-brands fa-square-x-twitter"></i></a>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <!--Hotel Management Sytem Modal-->
-    <div>
-      <div class="Header">
-        Hotel Management Sytem Details
+    <!-- SKILLS Section -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <h2 class="section-title"><i class="fas fa-cogs"></i> Technical Expertise</h2>
+        <div class="skills-cloud">
+          <span class="skill-pill">C#</span>
+          <span class="skill-pill">ASP.NET MVC</span>
+          <span class="skill-pill">ASP.NET Web API</span>
+          <span class="skill-pill">SQL (Azure, Supabase)</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Flask</span>
+          <span class="skill-pill">HTML5/CSS3</span>
+          <span class="skill-pill">JavaScript (ES6+)</span>
+          <span class="skill-pill">SDLC (Agile/Scrum)</span>
+          <span class="skill-pill">Entity Framework</span>
+        </div>
+        <div class="skills-icons">
+          <i class="fab fa-python"></i>
+          <i class="fab fa-csharp"></i>
+          <i class="fab fa-js"></i>
+          <i class="fab fa-html5"></i>
+          <i class="fab fa-css3-alt"></i>
+          <i class="fas fa-database"></i>
+          <i class="fab fa-microsoft"></i>
+          <i class="fas fa-code-branch"></i>
+        </div>
       </div>
-      <div class="body">
-        <!--Purpose of the system-->
-        <!--Technologies used-->
-      </div>
-    </div>
+    </section>
 
-    <!--Hotel Management Sytem Modal-->
-    <div>
-      <div class="Header">
-        Rental Management Sytem Details
+    <!-- CONTACT Section + Quick Message Form -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <h2 class="section-title"><i class="fas fa-envelope"></i> Get In Touch</h2>
+        <div class="contact-grid">
+          <div class="contact-form glass-card">
+            <h4><i class="fas fa-paper-plane"></i> Quick Message</h4>
+            <form id="quickMessageForm">
+              <div class="input-group">
+                <label>Your Email</label>
+                <input type="email" id="senderEmail" placeholder="hello@example.com" required>
+              </div>
+              <div class="input-group">
+                <label>Message</label>
+                <textarea id="messageText" rows="4" placeholder="I'd love to collaborate on..." required></textarea>
+              </div>
+              <button type="submit" class="btn-primary" id="sendMsgBtn">
+                <i class="fas fa-location-arrow"></i> Send Message
+              </button>
+              <div id="formFeedback" class="feedback-msg"></div>
+            </form>
+          </div>
+          <div class="social-links glass-card">
+            <h4><i class="fas fa-share-alt"></i> Connect Socially</h4>
+            <div class="social-icons">
+              <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="direct-email">
+              <i class="fas fa-envelope"></i> lindokuhle@example.com
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="body">
-        <!--Purpose of the system-->
-        <p>Manage Tents, Chairs, Table & Coldroom Rental. Online Payment, and delivery & collection</p>
-        <!--Technologies used-->
-        <p>C#,ASP.NET MVC Entity Framework, HTML5,CSS3,JAVASCRIPT</p>
-        <!--Features-->
-      </div>
-    </div>
+    </section>
+  </main>
 
-  </body>
+  <!-- MOBILE BOTTOM NAVIGATION (visible only on mobile) -->
+  <nav class="bottom-nav">
+    <a href="#home" class="bottom-nav-item active" data-mobile-nav="home"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="#about" class="bottom-nav-item" data-mobile-nav="about"><i class="fas fa-user"></i><span>About</span></a>
+    <a href="#projects" class="bottom-nav-item" data-mobile-nav="projects"><i class="fas fa-diagram-project"></i><span>Projects</span></a>
+    <a href="#skills" class="bottom-nav-item" data-mobile-nav="skills"><i class="fas fa-cogs"></i><span>Skills</span></a>
+    <a href="#contact" class="bottom-nav-item" data-mobile-nav="contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+  </nav>
+
+  <!-- MODALS for project details (dynamic content) -->
+  <div id="modal1" class="modal">
+    <div class="modal-content glass-card">
+      <span class="close-modal">&times;</span>
+      <h3>StudentXTutor Session Booking</h3>
+      <p><strong>Purpose:</strong> A web platform allowing students to book tutoring sessions, manage schedules, and provide feedback. Built with Flask and Supabase PostgreSQL for real-time sync.</p>
+      <p><strong>Technologies:</strong> Flask, Supabase (PostgreSQL), HTML5, CSS3, JavaScript, Jinja2.</p>
+      <p><strong>Features:</strong> User authentication, session availability, email reminders, and tutor ratings.</p>
+    </div>
+  </div>
+  <div id="modal2" class="modal">
+    <div class="modal-content glass-card">
+      <span class="close-modal">&times;</span>
+      <h3>Shoppers Mart Online Store</h3>
+      <p><strong>Purpose:</strong> Full-featured e-commerce with product catalog, shopping cart, and checkout flow.</p>
+      <p><strong>Technologies:</strong> ASP.NET Core MVC, Azure SQL, Bootstrap, Razor Views.</p>
+      <p><strong>Features:</strong> Product search, order tracking, admin dashboard.</p>
+    </div>
+  </div>
+  <div id="modal3" class="modal">
+    <div class="modal-content glass-card">
+      <span class="close-modal">&times;</span>
+      <h3>Event-Pro Rental Management</h3>
+      <p><strong>Purpose:</strong> Manage rental inventory (tents, chairs, tables, coldrooms) with delivery scheduling and online payments.</p>
+      <p><strong>Technologies:</strong> ASP.NET MVC, Entity Framework, Azure SQL, JavaScript.</p>
+      <p><strong>Features:</strong> Inventory tracking, payment gateway integration, automated invoicing.</p>
+    </div>
+  </div>
+  <div id="modal4" class="modal">
+    <div class="modal-content glass-card">
+      <span class="close-modal">&times;</span>
+      <h3>Apprising Hotel Management</h3>
+      <p><strong>Purpose:</strong> Desktop hotel management for reservations, guest check-ins, and billing using file-based storage.</p>
+      <p><strong>Technologies:</strong> C# Windows Forms, .NET Framework, text file persistence.</p>
+      <p><strong>Features:</strong> Room allocation, billing reports, guest history.</p>
+    </div>
+  </div>
+
+  <!-- STEP 2: JAVASCRIPT code (handles dark/light mode, email sending via fetch, modals, active nav) -->
+  <script>
+    // ======================= GLOBAL DOM ELEMENTS =======================
+    const body = document.body;
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const moonIcon = themeToggleBtn?.querySelector('.fa-moon');
+    const sunIcon = themeToggleBtn?.querySelector('.fa-sun');
+    const toggleTextSpan = themeToggleBtn?.querySelector('.toggle-text');
+    
+    // Load theme preference
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    if (savedTheme === 'light') {
+      body.classList.add('light-mode');
+      if (moonIcon) moonIcon.style.display = 'none';
+      if (sunIcon) sunIcon.style.display = 'inline-block';
+      if (toggleTextSpan) toggleTextSpan.innerText = 'Light';
+    } else {
+      body.classList.remove('light-mode');
+      if (moonIcon) moonIcon.style.display = 'inline-block';
+      if (sunIcon) sunIcon.style.display = 'none';
+      if (toggleTextSpan) toggleTextSpan.innerText = 'Dark';
+    }
+    
+    // Theme toggle logic
+    function toggleTheme() {
+      if (body.classList.contains('light-mode')) {
+        body.classList.remove('light-mode');
+        localStorage.setItem('theme', 'dark');
+        if (moonIcon) moonIcon.style.display = 'inline-block';
+        if (sunIcon) sunIcon.style.display = 'none';
+        if (toggleTextSpan) toggleTextSpan.innerText = 'Dark';
+      } else {
+        body.classList.add('light-mode');
+        localStorage.setItem('theme', 'light');
+        if (moonIcon) moonIcon.style.display = 'none';
+        if (sunIcon) sunIcon.style.display = 'inline-block';
+        if (toggleTextSpan) toggleTextSpan.innerText = 'Light';
+      }
+    }
+    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+    
+    // ======================= CV OPEN SIMULATION =======================
+    const cvBtn = document.getElementById('openCVBtn');
+    if (cvBtn) {
+      cvBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('📄 CV preview: You can upload a real PDF in production. Currently showcasing digital CV placeholder.');
+        // In real scenario: window.open('path/to/cv.pdf', '_blank');
+      });
+    }
+    
+    // ======================= ACTIVE NAVIGATION (highlight sections) =======================
+    const sections = document.querySelectorAll('.section');
+    const verticalNavLinks = document.querySelectorAll('.nav-link-vertical');
+    const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+    
+    function updateActiveNav() {
+      let currentSectionId = '';
+      const scrollPosition = window.scrollY + 150;
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          currentSectionId = section.getAttribute('id');
+        }
+      });
+      if (!currentSectionId && window.scrollY < 100) currentSectionId = 'home';
+      // Update vertical nav
+      verticalNavLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        link.parentElement.classList.remove('active');
+        if (href === `#${currentSectionId}`) {
+          link.parentElement.classList.add('active');
+        }
+      });
+      // Update bottom nav
+      bottomNavItems.forEach(item => {
+        const href = item.getAttribute('href');
+        item.classList.remove('active');
+        if (href === `#${currentSectionId}`) {
+          item.classList.add('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', updateActiveNav);
+    window.addEventListener('load', updateActiveNav);
+    
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"], .bottom-nav-item, .nav-link-vertical').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId !== '#') {
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+    
+    // ======================= MODALS (Project Details) =======================
+    const modals = document.querySelectorAll('.modal');
+    const detailBtns = document.querySelectorAll('.project-details-btn');
+    const closeModals = document.querySelectorAll('.close-modal');
+    
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) modal.style.display = 'flex';
+    }
+    function closeAllModals() {
+      modals.forEach(m => m.style.display = 'none');
+    }
+    detailBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const modalId = btn.getAttribute('data-modal');
+        if (modalId) openModal(modalId);
+      });
+    });
+    closeModals.forEach(closeBtn => {
+      closeBtn.addEventListener('click', closeAllModals);
+    });
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal')) closeAllModals();
+    });
+    
+    // ======================= QUICK MESSAGE FORM (send email via backend API) =======================
+    // This frontend code simulates sending email by calling your Python backend send_email method.
+    // Expected endpoint: /api/send-quick-message (POST)
+    // The JavaScript will send JSON: { to_emails: ["recipient@you.com"], subject, body_html, body_text }
+    // In this demo, we'll use fetch to a mock endpoint, but we'll also show a success simulation.
+    // Since you provided the Python email function, we create a fetch call that connects to your Flask/backend route.
+    
+    const form = document.getElementById('quickMessageForm');
+    const feedbackDiv = document.getElementById('formFeedback');
+    const sendBtn = document.getElementById('sendMsgBtn');
+    
+    // Replace with your actual recipient email (the developer's email)
+    const RECIPIENT_EMAIL = "lindokuhle@dut4life.ac.za";   // Update with real email address
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const senderEmail = document.getElementById('senderEmail').value.trim();
+      const message = document.getElementById('messageText').value.trim();
+      
+      if (!senderEmail || !message) {
+        feedbackDiv.innerHTML = '<span class="error">❌ Please fill both fields.</span>';
+        return;
+      }
+      
+      feedbackDiv.innerHTML = '<span class="loading">📡 Sending message...</span>';
+      sendBtn.disabled = true;
+      
+      // Build email content: body_html and body_text
+      const subject = `Portfolio Contact: Message from ${senderEmail}`;
+      const bodyText = `Sender: ${senderEmail}\n\nMessage:\n${message}`;
+      const bodyHtml = `<h3>New Quick Message from Portfolio</h3><p><strong>From:</strong> ${senderEmail}</p><p><strong>Message:</strong><br>${message.replace(/\n/g, '<br>')}</p>`;
+      
+      // PAYLOAD for your Python backend (which uses send_email method)
+      const payload = {
+        to_emails: [RECIPIENT_EMAIL],
+        subject: subject,
+        body_html: bodyHtml,
+        body_text: bodyText,
+        // Optional: we could attach sender email in reply-to, but backend may handle it.
+        from_email: senderEmail   // You can use this in backend to set reply-to or from header
+      };
+      
+      try {
+        // **** IMPORTANT: Replace with your actual API endpoint ****
+        // For example: '/api/send-email' should map to your Python send_email logic.
+        // Assuming your backend runs on same origin, adjust URL accordingly.
+        const response = await fetch('/api/send-quick-message', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        
+        if (response.ok) {
+          const result = await response.json();
+          feedbackDiv.innerHTML = '<span class="success">✅ Message sent successfully! I\'ll get back to you soon.</span>';
+          form.reset();
+        } else {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.message || 'Server error');
+        }
+      } catch (error) {
+        console.error('Email send error:', error);
+        feedbackDiv.innerHTML = `<span class="error">⚠️ Failed to send: ${error.message}. Please try again later or email me directly.</span>`;
+      } finally {
+        sendBtn.disabled = false;
+        setTimeout(() => {
+          if (feedbackDiv) feedbackDiv.innerHTML = '';
+        }, 5000);
+      }
+    });
+    
+    // Additional note: For demo/testing without backend, you can uncomment simulation below:
+    // (But this is just for demonstration; real integration uses fetch above)
+    /*
+    if (window.location.hostname === 'localhost') {
+      console.log('Running in dev — email simulation active');
+      const originalFetch = window.fetch;
+      window.fetch = function(url, options) {
+        if (url === '/api/send-quick-message') {
+          return Promise.resolve(new Response(JSON.stringify({ message: 'Simulated success' }), { status: 200 }));
+        }
+        return originalFetch.apply(this, arguments);
+      };
+    }
+    */
+  </script>
+</body>
 </html>
