@@ -83,7 +83,7 @@ body {
 
 .nav-logo span {
   font-weight: 700;
-  font-size: 18px;
+  font-size: 12px;
   letter-spacing: 1px;
   background: linear-gradient(135deg, var(--accent) 0%, #6ef0ca 100%);
   -webkit-background-clip: text;
