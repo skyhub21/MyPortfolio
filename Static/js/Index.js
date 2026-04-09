@@ -295,4 +295,66 @@ skillIcons.forEach(icon => {
   });
 });
 
+
+
+
+
+
+
+
+// ======================= FLIP CARD ENHANCEMENT =======================
+// Ensure flip cards work smoothly on touch devices
+const flipCards = document.querySelectorAll('.skill-card[data-flip="true"]');
+
+if (flipCards.length > 0) {
+  // For touch devices - flip on tap instead of hover
+  if ('ontouchstart' in window) {
+    flipCards.forEach(card => {
+      let isFlipped = false;
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const inner = card.querySelector('.skill-card-inner');
+        if (!isFlipped) {
+          inner.style.transform = 'rotateY(180deg)';
+          isFlipped = true;
+        } else {
+          inner.style.transform = 'rotateY(0deg)';
+          isFlipped = false;
+        }
+      });
+    });
+  }
+  
+  // Reset flip when clicking elsewhere (for touch devices)
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.skill-card[data-flip="true"]') && 'ontouchstart' in window) {
+      flipCards.forEach(card => {
+        const inner = card.querySelector('.skill-card-inner');
+        inner.style.transform = 'rotateY(0deg)';
+      });
+    }
+  });
+}
+
+// Add loading animation for skill logos
+const skillLogos = document.querySelectorAll('.skill-logo');
+skillLogos.forEach(logo => {
+  logo.addEventListener('load', () => {
+    logo.style.opacity = '0';
+    logo.style.animation = 'fadeIn 0.5s ease forwards';
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 console.log('Portfolio initialized successfully!');
