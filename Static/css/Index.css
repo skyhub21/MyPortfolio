@@ -448,7 +448,7 @@ body {
   flex-wrap: wrap;
   gap: 14px;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 .skill-pill {
@@ -478,7 +478,7 @@ body {
   /*border: 1px solid var(--glass-border);*/
 
   overflow: hidden;
-  margin-top: 40px;
+  /*margin-top: 40px;*/
 }
 
 /* Skill Card Container */
