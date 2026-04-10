@@ -357,4 +357,59 @@ skillLogos.forEach(logo => {
 
 
 
+
+// ======================= CIRCULAR PROGRESS BAR ANIMATION =======================
+// Function to animate circular progress bars when they come into view
+const animateProgressBars = () => {
+  const flipCards = document.querySelectorAll('.skill-card[data-flip="true"]');
+  
+  flipCards.forEach(card => {
+    const progressCircle = card.querySelector('.circle-progress');
+    const percentageElem = card.querySelector('.progress-percentage');
+    
+    if (progressCircle && percentageElem && !card.hasAttribute('data-animated')) {
+      const percentage = parseInt(percentageElem.textContent);
+      const radius = 55;
+      const circumference = 2 * Math.PI * radius;
+      const offset = circumference - (percentage / 100) * circumference;
+      
+      // Set the circle properties dynamically
+      progressCircle.style.strokeDasharray = circumference;
+      progressCircle.style.strokeDashoffset = circumference;
+      
+      // Create an intersection observer to trigger animation when card is visible
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              progressCircle.style.strokeDashoffset = offset;
+              card.setAttribute('data-animated', 'true');
+            }, 100);
+            observer.unobserve(card);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      observer.observe(card);
+    }
+  });
+};
+
+// Call the function when page loads
+document.addEventListener('DOMContentLoaded', () => {
+  animateProgressBars();
+});
+
+// Also trigger for dynamically loaded content
+window.addEventListener('load', animateProgressBars);
+
+
+
+
+
+
+
+
+
+
 console.log('Portfolio initialized successfully!');

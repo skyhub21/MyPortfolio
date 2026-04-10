@@ -475,17 +475,16 @@ body {
   background: var(--card-bg);
   backdrop-filter: blur(8px);
   border-radius: 24px;
-  /*border: 1px solid var(--glass-border);*/
-
+  border: 1px solid var(--glass-border);
   overflow: hidden;
-  /*margin-top: 40px;*/
+  margin-top: 40px;
 }
 
 /* Skill Card Container */
 .skill-card {
   position: relative;
   background: var(--card-bg);
-  min-height: 140px;
+  min-height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -554,7 +553,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 140px;
+  min-height: 160px;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
 }
@@ -584,32 +583,14 @@ body {
 .skill-card-back {
   transform: rotateY(180deg);
   background: linear-gradient(135deg, rgba(62, 235, 189, 0.15), rgba(62, 235, 189, 0.05));
-  border-radius: 16px;
-}
-
-.skill-card-back i {
-  font-size: 2.5rem;
-  color: var(--accent);
-}
-
-.skill-card-back span {
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-align: center;
-  color: var(--accent);
-}
-
-.skill-card-back small {
-  font-size: 0.75rem;
-  opacity: 0.8;
-  color: var(--text-secondary);
+  border-radius: 20px;
 }
 
 /* Non-flip cards (static) */
 .skill-card[data-flip="false"] .skill-card-inner {
   width: 100%;
   height: 100%;
-  min-height: 140px;
+  min-height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -636,13 +617,103 @@ body {
   letter-spacing: 0.5px;
 }
 
+/* ========== CIRCULAR PROGRESS BAR STYLES ========== */
+.circular-progress {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 10px auto;
+}
+
+.circular-progress svg {
+  transform: rotate(-90deg);
+  width: 120px;
+  height: 120px;
+}
+
+.circular-progress circle {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.circular-progress .circle-bg {
+  stroke: rgba(62, 235, 189, 0.15);
+}
+
+.circular-progress .circle-progress {
+  stroke: var(--accent);
+  stroke-dasharray: 345;
+  stroke-dashoffset: 345;
+  transition: stroke-dashoffset 0.8s ease-out;
+}
+
+/* Animate progress on hover */
+.skill-card[data-flip="true"]:hover .circle-progress {
+  stroke-dashoffset: calc(345 - (345 * var(--progress)) / 100);
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.progress-percentage {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+  line-height: 1;
+}
+
+.progress-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  display: block;
+  margin-top: 4px;
+}
+
+.skill-back-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 12px;
+  text-align: center;
+}
+
+.skill-back-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Individual skill progress levels */
+.skill-card[data-skill-level="expert"] {
+  --progress: 90;
+}
+
+.skill-card[data-skill-level="advanced"] {
+  --progress: 75;
+}
+
+.skill-card[data-skill-level="intermediate"] {
+  --progress: 60;
+}
+
+.skill-card[data-skill-level="beginner"] {
+  --progress: 40;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .skills-grid {
     grid-template-columns: repeat(3, 1fr);
   }
   
-  /* Adjust dividers for 3 columns */
   .skill-card:not(:nth-child(3n))::after {
     display: block;
   }
@@ -659,7 +730,6 @@ body {
     display: none;
   }
   
-  /* Reset 4-column rules */
   .skill-card:nth-child(4n)::after {
     display: block;
   }
@@ -674,7 +744,6 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
   
-  /* Adjust dividers for 2 columns */
   .skill-card:not(:nth-child(2n))::after {
     display: block;
   }
@@ -690,6 +759,20 @@ body {
   .skill-card:nth-child(-n+2)::before {
     display: none;
   }
+  
+  .circular-progress {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .circular-progress svg {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .progress-percentage {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -697,7 +780,6 @@ body {
     grid-template-columns: 1fr;
   }
   
-  /* No dividers needed for single column */
   .skill-card::after,
   .skill-card::before {
     display: none !important;
