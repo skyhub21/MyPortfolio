@@ -60,7 +60,7 @@ body {
   background: var(--nav-pill-bg);
   backdrop-filter: blur(12px);
   border-radius: 60px;
-  padding: 20px 12px;
+  padding: 20px 5px;
   z-index: 1000;
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow);
@@ -484,7 +484,7 @@ body {
 .skill-card {
   position: relative;
   background: var(--card-bg);
-  min-height: 160px;
+  min-height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -553,7 +553,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 160px;
+  min-height: 200px;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
 }
@@ -572,8 +572,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .skill-card-front {
@@ -584,13 +584,14 @@ body {
   transform: rotateY(180deg);
   background: linear-gradient(135deg, rgba(62, 235, 189, 0.15), rgba(62, 235, 189, 0.05));
   border-radius: 20px;
+  overflow: auto;
 }
 
 /* Non-flip cards (static) */
 .skill-card[data-flip="false"] .skill-card-inner {
   width: 100%;
   height: 100%;
-  min-height: 160px;
+  min-height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -617,18 +618,19 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* ========== CIRCULAR PROGRESS BAR STYLES ========== */
+/* ========== FIXED CIRCULAR PROGRESS BAR STYLES ========== */
 .circular-progress {
   position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 10px auto;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 10px auto;
+  flex-shrink: 0;
 }
 
 .circular-progress svg {
   transform: rotate(-90deg);
-  width: 120px;
-  height: 120px;
+  width: 100%;
+  height: 100%;
 }
 
 .circular-progress circle {
@@ -659,10 +661,11 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  width: 100%;
 }
 
 .progress-percentage {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--accent);
   display: block;
@@ -680,7 +683,7 @@ body {
   font-size: 1rem;
   font-weight: 700;
   color: var(--accent);
-  margin-top: 12px;
+  margin-top: 8px;
   text-align: center;
 }
 
@@ -689,6 +692,8 @@ body {
   color: var(--text-secondary);
   text-align: center;
   margin-top: 4px;
+  line-height: 1.3;
+  max-width: 90%;
 }
 
 /* Individual skill progress levels */
@@ -697,23 +702,47 @@ body {
 }
 
 .skill-card[data-skill-level="advanced"] {
-  --progress: 75;
+  --progress: 80;
 }
 
 .skill-card[data-skill-level="intermediate"] {
-  --progress: 60;
+  --progress: 65;
 }
 
 .skill-card[data-skill-level="beginner"] {
   --progress: 40;
 }
 
-/* Responsive adjustments */
+/* ========== RESPONSIVE FIXES FOR MOBILE ========== */
 @media (max-width: 1024px) {
   .skills-grid {
     grid-template-columns: repeat(3, 1fr);
   }
   
+  .skill-card,
+  .skill-card[data-flip="true"] .skill-card-inner,
+  .skill-card[data-flip="false"] .skill-card-inner {
+    min-height: 220px;
+  }
+  
+  .circular-progress {
+    width: 110px;
+    height: 110px;
+  }
+  
+  .progress-percentage {
+    font-size: 1.3rem;
+  }
+  
+  .skill-back-title {
+    font-size: 0.9rem;
+  }
+  
+  .skill-back-desc {
+    font-size: 0.7rem;
+  }
+  
+  /* Adjust dividers for 3 columns */
   .skill-card:not(:nth-child(3n))::after {
     display: block;
   }
@@ -744,6 +773,44 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
   
+  .skill-card,
+  .skill-card[data-flip="true"] .skill-card-inner,
+  .skill-card[data-flip="false"] .skill-card-inner {
+    min-height: 200px;
+  }
+  
+  .circular-progress {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .progress-percentage {
+    font-size: 1.2rem;
+  }
+  
+  .progress-label {
+    font-size: 0.65rem;
+  }
+  
+  .skill-back-title {
+    font-size: 0.85rem;
+    margin-top: 6px;
+  }
+  
+  .skill-back-desc {
+    font-size: 0.7rem;
+  }
+  
+  .skill-logo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .skill-name {
+    font-size: 0.75rem;
+  }
+  
+  /* Adjust dividers for 2 columns */
   .skill-card:not(:nth-child(2n))::after {
     display: block;
   }
@@ -759,20 +826,6 @@ body {
   .skill-card:nth-child(-n+2)::before {
     display: none;
   }
-  
-  .circular-progress {
-    width: 90px;
-    height: 90px;
-  }
-  
-  .circular-progress svg {
-    width: 90px;
-    height: 90px;
-  }
-  
-  .progress-percentage {
-    font-size: 1.2rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -780,6 +833,39 @@ body {
     grid-template-columns: 1fr;
   }
   
+  .skill-card,
+  .skill-card[data-flip="true"] .skill-card-inner,
+  .skill-card[data-flip="false"] .skill-card-inner {
+    min-height: 240px;
+  }
+  
+  .circular-progress {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .progress-percentage {
+    font-size: 1.5rem;
+  }
+  
+  .skill-back-title {
+    font-size: 1rem;
+  }
+  
+  .skill-back-desc {
+    font-size: 0.8rem;
+  }
+  
+  .skill-logo {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .skill-name {
+    font-size: 0.9rem;
+  }
+  
+  /* Remove dividers for single column */
   .skill-card::after,
   .skill-card::before {
     display: none !important;
@@ -791,6 +877,22 @@ body {
   
   .skill-card:last-child {
     border-bottom: none;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 380px) {
+  .circular-progress {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .progress-percentage {
+    font-size: 1.2rem;
+  }
+  
+  .skill-card-back {
+    padding: 15px;
   }
 }
 
