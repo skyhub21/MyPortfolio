@@ -407,4 +407,173 @@ window.addEventListener('load', animateCircularProgress);
 
 
 
+
+
+
+
+// ======================= DATE & TIME WIDGET =======================
+function updateDateTime() {
+  const now = new Date();
+  const timeElement = document.getElementById('currentTime');
+  const dateElement = document.getElementById('currentDate');
+  
+  if (timeElement) {
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    timeElement.textContent = `${hours}:${minutes}`;
+  }
+  
+  if (dateElement) {
+    const options = { weekday: 'short', month: 'short', day: 'numeric' };
+    dateElement.textContent = now.toLocaleDateString('en-US', options);
+  }
+}
+
+updateDateTime();
+setInterval(updateDateTime, 60000); // Update every minute
+
+// ======================= WEATHER WIDGET =======================
+const WEATHER_API_KEY = '3425623991264e609b5201136252205'; // Replace with your WeatherAPI key
+let currentLocation = 'Durban';
+let useUserLocation = false;
+
+async function fetchWeather(location) {
+  try {
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${location}&aqi=no`
+    );
+    
+    if (!response.ok) throw new Error('Weather fetch failed');
+    
+    const data = await response.json();
+    
+    // Update weather widget with new structure
+    const locationEl = document.getElementById('weatherLocation');
+    const tempEl = document.getElementById('weatherTemp');
+    const conditionEl = document.getElementById('weatherCondition');
+    const iconEl = document.getElementById('weatherIcon');
+    
+    if (locationEl) {
+      locationEl.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${data.location.name}`;
+    }
+    if (tempEl) tempEl.textContent = `${Math.round(data.current.temp_c)}°C`;
+    if (conditionEl) conditionEl.textContent = data.current.condition.text;
+    if (iconEl) {
+      iconEl.innerHTML = `<img src="${data.current.condition.icon}" alt="${data.current.condition.text}">`;
+    }
+    
+    currentLocation = data.location.name;
+    
+  } catch (error) {
+    console.error('Weather fetch error:', error);
+    const conditionEl = document.getElementById('weatherCondition');
+    if (conditionEl) conditionEl.textContent = 'Weather unavailable';
+  }
+}
+
+// Get user's location
+function getUserLocation() {
+  if (!navigator.geolocation) {
+    alert('Geolocation is not supported by your browser');
+    return;
+  }
+  
+  const locateBtn = document.getElementById('locateMeBtn');
+  if (locateBtn) {
+    locateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+  }
+  
+  navigator.geolocation.getCurrentPosition(
+    async (position) => {
+      const { latitude, longitude } = position.coords;
+      await fetchWeather(`${latitude},${longitude}`);
+      useUserLocation = true;
+      
+      if (locateBtn) {
+        locateBtn.innerHTML = '<i class="fas fa-location-dot"></i>';
+        locateBtn.style.opacity = '0.7';
+        setTimeout(() => {
+          locateBtn.style.opacity = '1';
+        }, 500);
+      }
+    },
+    (error) => {
+      console.error('Location error:', error);
+      alert('Unable to get your location. Showing default weather for Durban.');
+      fetchWeather('Durban');
+      
+      if (locateBtn) {
+        locateBtn.innerHTML = '<i class="fas fa-location-dot"></i>';
+      }
+    }
+  );
+}
+
+// Initialize weather
+fetchWeather('Durban');
+
+// Set up location button
+const locateBtn = document.getElementById('locateMeBtn');
+if (locateBtn) {
+  locateBtn.addEventListener('click', getUserLocation);
+}
+
+// Refresh weather every 30 minutes
+setInterval(() => {
+  if (useUserLocation && currentLocation) {
+    fetchWeather(currentLocation);
+  } else {
+    fetchWeather('Durban');
+  }
+}, 1800000);
+
+// ======================= UPDATED THEME TOGGLE (Slider Switch) =======================
+const themeCheckbox = document.getElementById('themeToggleCheckbox');
+
+// Load theme preference
+const savedThemeForToggle = localStorage.getItem('theme') || 'dark';
+if (savedThemeForToggle === 'light') {
+  body.classList.add('light-mode');
+  if (themeCheckbox) themeCheckbox.checked = true;
+} else {
+  body.classList.remove('light-mode');
+  if (themeCheckbox) themeCheckbox.checked = false;
+}
+
+// Theme toggle function for slider
+function toggleThemeWithSlider() {
+  if (body.classList.contains('light-mode')) {
+    body.classList.remove('light-mode');
+    localStorage.setItem('theme', 'dark');
+    if (themeCheckbox) themeCheckbox.checked = false;
+  } else {
+    body.classList.add('light-mode');
+    localStorage.setItem('theme', 'light');
+    if (themeCheckbox) themeCheckbox.checked = true;
+  }
+}
+
+if (themeCheckbox) {
+  themeCheckbox.addEventListener('change', toggleThemeWithSlider);
+}
+
+// ========== UPDATE CV BUTTON FUNCTIONALITY ==========
+const cvActionBtn = document.querySelector('.cv-action');
+if (cvActionBtn) {
+  cvActionBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('📄 CV Preview: You can upload your actual CV PDF to the "Static/" folder and link it here.');
+    // window.open('Static/Lindokuhle_Qwabe_CV.pdf', '_blank');
+  });
+}
+
+
+
+
+
+
+
+
+
+
 console.log('Portfolio initialized successfully!');

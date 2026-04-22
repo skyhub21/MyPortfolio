@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>LEARNDO</title>
+  <title>LINDO</title>
   <!-- Font Awesome 6 (free icons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Google Fonts: Inter for modern sans-serif -->
@@ -52,35 +52,73 @@
     </ul>
   </nav>
 
-  <!-- TOP RIGHT HORIZONTAL PILLS: CV + Dark/Light Toggle -->
+  <!-- TOP RIGHT ACTIONS (Combined Pill) -->
   <div class="top-actions">
-    <a href="#" class="pill-btn cv-pill" id="openCVBtn">
-      <i class="fas fa-file-alt"></i> Open CV
-    </a>
-    <button class="pill-btn theme-toggle" id="themeToggleBtn">
-      <i class="fas fa-moon"></i>
-      <i class="fas fa-sun" style="display: none;"></i>
-      <span class="toggle-text">Dark</span>
-    </button>
+    <div class="combined-pill">
+      <a href="#" class="pill-action cv-action" id="openCVBtn">
+        <i class="fas fa-file-alt"></i>
+        <span>CV</span>
+      </a>
+      <div class="divider"></div>
+      <div class="theme-switch-wrapper">
+        <span class="theme-icon"><i class="fas fa-moon"></i></span>
+        <label class="theme-switch">
+          <input type="checkbox" id="themeToggleCheckbox">
+          <span class="slider round"></span>
+        </label>
+        <span class="theme-icon"><i class="fas fa-sun"></i></span>
+      </div>
+    </div>
   </div>
 
   <!-- MAIN CONTENT WRAPPER (to account for left vertical nav) -->
   <main class="main-content">
     <!-- HOME Section (root) -->
     <section id="home" class="section home-section">
+      <!-- Background images for dark/light mode -->
+      <div class="home-bg dark-bg"></div>
+      <div class="home-bg light-bg"></div>
+      
       <div class="container home-grid">
         <div class="home-text">
           <div class="badge-accent">ICT Application Developer</div>
           <h1 class="glow-text">Web & Mobile App<br><span class="accent-text">Developer</span></h1>
-          <p class="lead-paragraph">Hi, I'm Lindokuhle Qwabe — a passionate full-stack developer with strong SDLC knowledge, turning ideas into elegant digital solutions.</p>
+          <p class="lead-paragraph">I'm Lindokuhle Qwabe a passionate and curious full-stack developer with strong knowledge of SDLC, turning ideas into fascinating digital solutions.</p>
           <div class="home-cta">
             <a href="#contact" class="btn-primary">Let's Connect <i class="fas fa-arrow-right"></i></a>
-            <a href="#projects" class="btn-outline">Explore Work</a>
+            <a href="#projects" class="btn-outline"><i class="fa-regular fa-compass"></i> Xplore Work</a>
           </div>
         </div>
         <div class="home-image">
           <div class="glass-circle">
             <img src="Static/images/4727484.jpg" alt="Developer avatar" class="avatar-img">
+            <!-- Widgets as overlay on avatar -->
+            <div class="avatar-widgets">
+              <div class="widget-card datetime-card">
+                <div class="widget-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="widget-info">
+                  <div class="time" id="currentTime">--:--</div>
+                  <div class="date" id="currentDate">Loading...</div>
+                </div>
+              </div>
+              
+              <div class="widget-card weather-card">
+                <div class="widget-icon" id="weatherIcon">
+                  <!--<i class="fas fa-cloud-sun"></i>-->
+                </div>
+                <div class="widget-info">
+                  <div class="weather-temp" id="weatherTemp">--°C</div>
+                  <div class="weather-location" id="weatherLocation">Durban</div>
+                </div>
+                <button class="weather-locate-btn" id="locateMeBtn" title="Use my location">
+                  <i class="fas fa-location-dot"></i>
+                </button>
+                <div class="weather-condition" id="weatherCondition">Loading...</div>
+                <div class="weather-icon" ></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -89,16 +127,16 @@
     <!-- ABOUT Section -->
     <section id="about" class="section about-section">
       <div class="container">
-        <h2 class="section-title"><i class="fas fa-user-astronaut"></i> About Me</h2>
+        <h2 class="section-title"><i class="fas fa-user-astronaut"></i> Why Choose Me</h2>
         <div class="about-grid">
           <div class="about-card glass-card">
             <h4><i class="fas fa-brain"></i> Personality & Drive</h4>
-            <p>I'm a recent graduate of the Diploma in ICT: Application Development (DUT) and currently pursuing an Advanced Diploma in ICT. Curiosity drives me — I'm fascinated by debugging, clean architecture, and solving real-world challenges. During my 3rd year, I served as a volunteer tutor and led three successful group development projects.</p>
+            <p>I'm a recent graduate of the Diploma in ICT: Application Development and currently pursuing an Advanced Diploma in ICT. Curiosity drives me, I'm fascinated by debugging, clean architecture, and solving real-world challenges. During my 3rd year, I served as a volunteer tutor for 1st year projects.</p>
           </div>
           <div class="about-card glass-card">
             <h4><i class="fas fa-quote-left"></i> Favorite Quote</h4>
             <p>"Start where you are. Use what you have. Do what you can" — Arthur Ashe.</p>
-            <p class="mt-2">This reminds me to begin with research, leverage available tools, and craft impactful solutions incrementally.</p>
+            <p class="mt-2">This reminds me to begin with research, leverage available tools, and learn or do impactful Technologies.</p>
           </div>
           <div class="about-card glass-card">
             <h4><i class="fas fa-certificate"></i> Certifications</h4>
@@ -113,7 +151,7 @@
           </div>
         </div>
         <div class="education-badge glass-card">
-          <i class="fas fa-university"></i> Durban University of Technology • Diploma + Advanced Diploma (Current)
+          <i class="fas fa-university"></i> Diploma + Advanced Diploma (Current)•
         </div>
       </div>
     </section>

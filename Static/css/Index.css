@@ -1177,3 +1177,465 @@ body.light-mode .input-group textarea {
     padding: 20px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========== HOME SECTION WITH BACKGROUND IMAGES ========== */
+.home-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.home-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+
+.dark-bg {
+  background-image: url('Static/images/dark2.jpg');
+  opacity: 1;
+}
+
+.light-bg {
+  background-image: url('Static/images/light1.jpg');
+  opacity: 0;
+}
+
+body.light-mode .dark-bg {
+  opacity: 0;
+}
+
+body.light-mode .light-bg {
+  opacity: 1;
+}
+
+.home-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Avatar Container with Widget Overlay */
+.home-image {
+  position: relative;
+}
+
+.glass-circle {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-radius: 50%;
+  padding: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  animation: float 6s ease-in-out infinite;
+}
+
+.avatar-img {
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Modern Widgets Overlay on Avatar */
+.avatar-widgets {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  width: 90%;
+  justify-content: center;
+  z-index: 5;
+}
+
+.widget-card {
+  background: var(--nav-pill-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.widget-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(62, 235, 189, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.widget-card:hover::before {
+  left: 100%;
+}
+
+.widget-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 5px 15px rgba(62, 235, 189, 0.2);
+}
+
+.widget-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(62, 235, 189, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.widget-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Date & Time Widget */
+.datetime-card .time {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: 'Inter', monospace;
+  color: var(--accent);
+  line-height: 1.2;
+}
+
+.datetime-card .date {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Weather Widget */
+.weather-card {
+  position: relative;
+  padding-right: 40px;
+}
+
+.weather-card .weather-temp {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.2;
+}
+
+.weather-card .weather-location {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.weather-condition {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.weather-icon {
+  position: absolute;
+  top: -30px;
+  right: -10px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.weather-icon img {
+  width: 50px;
+  height: 50px;
+}
+
+.weather-locate-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: rgba(62, 235, 189, 0.2);
+  border: none;
+  border-radius: 8px;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  color: var(--accent);
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 2;
+}
+
+.weather-locate-btn:hover {
+  background: var(--accent);
+  color: #051b24;
+  transform: scale(1.1);
+}
+
+/* ========== COMBINED PILL FOR CV + THEME TOGGLE ========== */
+.top-actions {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1001;
+}
+
+.combined-pill {
+  background: var(--nav-pill-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 60px;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.combined-pill:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.pill-action {
+  padding: 8px 16px;
+  border-radius: 40px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.pill-action:hover {
+  background: var(--accent);
+  color: #051b24;
+}
+
+.divider {
+  width: 1px;
+  height: 30px;
+  background: var(--glass-border);
+}
+
+/* Theme Switch (Toggle) */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+}
+
+.theme-icon {
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--text-secondary);
+  transition: 0.3s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--accent);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .avatar-widgets {
+    bottom: 5px;
+    gap: 10px;
+  }
+  
+  .widget-card {
+    padding: 8px 12px;
+  }
+  
+  .widget-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .datetime-card .time {
+    font-size: 1rem;
+  }
+  
+  .weather-card .weather-temp {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .avatar-widgets {
+    flex-direction: column;
+    bottom: 20px;
+    width: auto;
+    left: auto;
+    right: 10px;
+    transform: none;
+  }
+  
+  .widget-card {
+    width: 160px;
+  }
+  
+  .weather-condition {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    margin-top: 5px;
+    font-size: 0.6rem;
+    white-space: normal;
+  }
+  
+  .weather-icon {
+    top: -20px;
+    right: -5px;
+  }
+  
+  .weather-icon img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar-widgets {
+    right: 5px;
+    bottom: 10px;
+    gap: 8px;
+  }
+  
+  .widget-card {
+    padding: 6px 10px;
+    width: 140px;
+  }
+  
+  .widget-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+  
+  .datetime-card .time {
+    font-size: 0.9rem;
+  }
+  
+  .datetime-card .date {
+    font-size: 0.6rem;
+  }
+  
+  .weather-card .weather-temp {
+    font-size: 0.9rem;
+  }
+  
+  .combined-pill {
+    padding: 4px 6px;
+  }
+  
+  .pill-action {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .theme-switch {
+    width: 40px;
+    height: 20px;
+  }
+  
+  .slider:before {
+    height: 14px;
+    width: 14px;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(20px);
+  }
+}
