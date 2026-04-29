@@ -581,7 +581,6 @@ if (cvActionBtn) {
 
 
 // ======================= BACKGROUND IMAGE SWAPPER =======================
-// ======================= FULL WIDTH BACKGROUND IMAGE SWAPPER =======================
 function updateBackgroundImages() {
   const darkBgDiv = document.querySelector('.home-bg.dark-bg');
   const lightBgDiv = document.querySelector('.home-bg.light-bg');
@@ -600,23 +599,27 @@ function updateBackgroundImages() {
 
 // Set background images dynamically
 function setBackgroundImages(darkImageUrl, lightImageUrl) {
-  // Remove existing background divs if any
-  const existingBgs = document.querySelectorAll('.home-bg');
-  existingBgs.forEach(bg => bg.remove());
+  let darkBgDiv = document.querySelector('.home-bg.dark-bg');
+  let lightBgDiv = document.querySelector('.home-bg.light-bg');
   
-  // Create dark mode background
-  const darkBgDiv = document.createElement('div');
-  darkBgDiv.className = 'home-bg dark-bg';
+  // Create divs if they don't exist
+  if (!darkBgDiv) {
+    darkBgDiv = document.createElement('div');
+    darkBgDiv.className = 'home-bg dark-bg';
+    const homeSection = document.querySelector('.home-section');
+    if (homeSection) homeSection.insertBefore(darkBgDiv, homeSection.firstChild);
+  }
+  
+  if (!lightBgDiv) {
+    lightBgDiv = document.createElement('div');
+    lightBgDiv.className = 'home-bg light-bg';
+    const homeSection = document.querySelector('.home-section');
+    if (homeSection) homeSection.insertBefore(lightBgDiv, homeSection.firstChild);
+  }
+  
+  // Set the background images
   darkBgDiv.style.backgroundImage = `url('${darkImageUrl}')`;
-  darkBgDiv.style.opacity = '1';
-  document.body.insertBefore(darkBgDiv, document.body.firstChild);
-  
-  // Create light mode background
-  const lightBgDiv = document.createElement('div');
-  lightBgDiv.className = 'home-bg light-bg';
   lightBgDiv.style.backgroundImage = `url('${lightImageUrl}')`;
-  lightBgDiv.style.opacity = '0';
-  document.body.insertBefore(lightBgDiv, document.body.firstChild);
   
   // Initial opacity update
   updateBackgroundImages();
