@@ -580,9 +580,7 @@ if (cvActionBtn) {
 
 
 
-
-
-
+// ======================= BACKGROUND IMAGE SWAPPER =======================
 // ======================= FULL WIDTH BACKGROUND IMAGE SWAPPER =======================
 function updateBackgroundImages() {
   const darkBgDiv = document.querySelector('.home-bg.dark-bg');
@@ -625,31 +623,32 @@ function setBackgroundImages(darkImageUrl, lightImageUrl) {
 }
 
 // Initialize backgrounds with your images (update these paths)
-const darkBgImage = 'Static/images/dark2.jpg';  // Change to  dark mode image path
-const lightBgImage = 'Static/images/light1.jpg'; // Change to  light mode image path
+const darkBgImage = 'Static/images/dark2.jpg';  // Change to your dark mode image path
+const lightBgImage = 'Static/images/light1.jpg'; // Change to your light mode image path
 
-// Call this when page loads
-document.addEventListener('DOMContentLoaded', () => {
-  setBackgroundImages(darkBgImage, lightBgImage);
-});
+setBackgroundImages(darkBgImage, lightBgImage);
 
 // Listen for theme changes to swap backgrounds
-const themeCheckboxForBg = document.getElementById('themeToggleCheckbox');
-if (themeCheckboxForBg) {
-  themeCheckboxForBg.addEventListener('change', () => {
+const themeToggleCheckbox = document.getElementById('themeToggleCheckbox');
+if (themeToggleCheckbox) {
+  themeToggleCheckbox.addEventListener('change', () => {
     setTimeout(updateBackgroundImages, 50);
   });
 }
 
-// Also update when theme is toggled via body class changes
-const observer = new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
-    if (mutation.attributeName === 'class') {
-      updateBackgroundImages();
-    }
-  });
-});
-observer.observe(document.body, { attributes: true });
+// Also update when theme is toggled via other methods
+const originalToggleTheme = toggleThemeWithSlider;
+if (typeof toggleThemeWithSlider === 'function') {
+  window.toggleThemeWithSlider = function() {
+    originalToggleTheme();
+    updateBackgroundImages();
+  };
+}
+
+
+
+
+
 
 
 
