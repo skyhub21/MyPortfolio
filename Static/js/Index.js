@@ -583,7 +583,7 @@ if (cvActionBtn) {
 
 
 
-// ======================= BACKGROUND IMAGE SWAPPER =======================
+// ======================= FULL WIDTH BACKGROUND IMAGE SWAPPER =======================
 function updateBackgroundImages() {
   const darkBgDiv = document.querySelector('.home-bg.dark-bg');
   const lightBgDiv = document.querySelector('.home-bg.light-bg');
@@ -602,54 +602,55 @@ function updateBackgroundImages() {
 
 // Set background images dynamically
 function setBackgroundImages(darkImageUrl, lightImageUrl) {
-  let darkBgDiv = document.querySelector('.home-bg.dark-bg');
-  let lightBgDiv = document.querySelector('.home-bg.light-bg');
+  // Remove existing background divs if any
+  const existingBgs = document.querySelectorAll('.home-bg');
+  existingBgs.forEach(bg => bg.remove());
   
-  // Create divs if they don't exist
-  if (!darkBgDiv) {
-    darkBgDiv = document.createElement('div');
-    darkBgDiv.className = 'home-bg dark-bg';
-    const homeSection = document.querySelector('.home-section');
-    if (homeSection) homeSection.insertBefore(darkBgDiv, homeSection.firstChild);
-  }
-  
-  if (!lightBgDiv) {
-    lightBgDiv = document.createElement('div');
-    lightBgDiv.className = 'home-bg light-bg';
-    const homeSection = document.querySelector('.home-section');
-    if (homeSection) homeSection.insertBefore(lightBgDiv, homeSection.firstChild);
-  }
-  
-  // Set the background images
+  // Create dark mode background
+  const darkBgDiv = document.createElement('div');
+  darkBgDiv.className = 'home-bg dark-bg';
   darkBgDiv.style.backgroundImage = `url('${darkImageUrl}')`;
+  darkBgDiv.style.opacity = '1';
+  document.body.insertBefore(darkBgDiv, document.body.firstChild);
+  
+  // Create light mode background
+  const lightBgDiv = document.createElement('div');
+  lightBgDiv.className = 'home-bg light-bg';
   lightBgDiv.style.backgroundImage = `url('${lightImageUrl}')`;
+  lightBgDiv.style.opacity = '0';
+  document.body.insertBefore(lightBgDiv, document.body.firstChild);
   
   // Initial opacity update
   updateBackgroundImages();
 }
 
 // Initialize backgrounds with your images (update these paths)
-const darkBgImage = 'Static/images/dark2.jpg';  // Change to your dark mode image path
-const lightBgImage = 'Static/images/light1.jpg'; // Change to your light mode image path
+const darkBgImage = 'Static/images/dark2.jpg';  // Change to  dark mode image path
+const lightBgImage = 'Static/images/light1.jpg'; // Change to  light mode image path
 
-setBackgroundImages(darkBgImage, lightBgImage);
+// Call this when page loads
+document.addEventListener('DOMContentLoaded', () => {
+  setBackgroundImages(darkBgImage, lightBgImage);
+});
 
 // Listen for theme changes to swap backgrounds
-const themeToggleCheckbox = document.getElementById('themeToggleCheckbox');
-if (themeToggleCheckbox) {
-  themeToggleCheckbox.addEventListener('change', () => {
+const themeCheckboxForBg = document.getElementById('themeToggleCheckbox');
+if (themeCheckboxForBg) {
+  themeCheckboxForBg.addEventListener('change', () => {
     setTimeout(updateBackgroundImages, 50);
   });
 }
 
-// Also update when theme is toggled via other methods
-const originalToggleTheme = toggleThemeWithSlider;
-if (typeof toggleThemeWithSlider === 'function') {
-  window.toggleThemeWithSlider = function() {
-    originalToggleTheme();
-    updateBackgroundImages();
-  };
-}
+// Also update when theme is toggled via body class changes
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.attributeName === 'class') {
+      updateBackgroundImages();
+    }
+  });
+});
+observer.observe(document.body, { attributes: true });
+
 
 
 
