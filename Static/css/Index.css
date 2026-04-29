@@ -1212,18 +1212,8 @@ body.light-mode .input-group textarea {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.8s ease-in-out;
   z-index: 0;
-}
-
-.dark-bg {
-  background-image: url('Static/images/dark2.jpg');
-  opacity: 1;
-}
-
-.light-bg {
-  background-image: url('Static/images/light1.jpg');
-  opacity: 0;
 }
 
 body.light-mode .dark-bg {

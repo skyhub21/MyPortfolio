@@ -576,4 +576,84 @@ if (cvActionBtn) {
 
 
 
+
+
+
+
+
+
+
+// ======================= BACKGROUND IMAGE SWAPPER =======================
+function updateBackgroundImages() {
+  const darkBgDiv = document.querySelector('.home-bg.dark-bg');
+  const lightBgDiv = document.querySelector('.home-bg.light-bg');
+  const isLightMode = body.classList.contains('light-mode');
+  
+  if (darkBgDiv && lightBgDiv) {
+    if (isLightMode) {
+      darkBgDiv.style.opacity = '0';
+      lightBgDiv.style.opacity = '1';
+    } else {
+      darkBgDiv.style.opacity = '1';
+      lightBgDiv.style.opacity = '0';
+    }
+  }
+}
+
+// Set background images dynamically
+function setBackgroundImages(darkImageUrl, lightImageUrl) {
+  let darkBgDiv = document.querySelector('.home-bg.dark-bg');
+  let lightBgDiv = document.querySelector('.home-bg.light-bg');
+  
+  // Create divs if they don't exist
+  if (!darkBgDiv) {
+    darkBgDiv = document.createElement('div');
+    darkBgDiv.className = 'home-bg dark-bg';
+    const homeSection = document.querySelector('.home-section');
+    if (homeSection) homeSection.insertBefore(darkBgDiv, homeSection.firstChild);
+  }
+  
+  if (!lightBgDiv) {
+    lightBgDiv = document.createElement('div');
+    lightBgDiv.className = 'home-bg light-bg';
+    const homeSection = document.querySelector('.home-section');
+    if (homeSection) homeSection.insertBefore(lightBgDiv, homeSection.firstChild);
+  }
+  
+  // Set the background images
+  darkBgDiv.style.backgroundImage = `url('${darkImageUrl}')`;
+  lightBgDiv.style.backgroundImage = `url('${lightImageUrl}')`;
+  
+  // Initial opacity update
+  updateBackgroundImages();
+}
+
+// Initialize backgrounds with your images (update these paths)
+const darkBgImage = 'Static/images/dark2.jpg';  // Change to your dark mode image path
+const lightBgImage = 'Static/images/light1.jpg'; // Change to your light mode image path
+
+setBackgroundImages(darkBgImage, lightBgImage);
+
+// Listen for theme changes to swap backgrounds
+const themeToggleCheckbox = document.getElementById('themeToggleCheckbox');
+if (themeToggleCheckbox) {
+  themeToggleCheckbox.addEventListener('change', () => {
+    setTimeout(updateBackgroundImages, 50);
+  });
+}
+
+// Also update when theme is toggled via other methods
+const originalToggleTheme = toggleThemeWithSlider;
+if (typeof toggleThemeWithSlider === 'function') {
+  window.toggleThemeWithSlider = function() {
+    originalToggleTheme();
+    updateBackgroundImages();
+  };
+}
+
+
+
+
+
+
 console.log('Portfolio initialized successfully!');
